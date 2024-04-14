@@ -1,6 +1,6 @@
 package com.kolokvijum.kolokvijum1;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "sv_68_2021")

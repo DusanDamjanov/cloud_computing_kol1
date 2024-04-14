@@ -14,16 +14,16 @@ import javax.swing.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("localhost:/lalalal")   //todo: bice ovo da se izmeni...vrv neka konfiguracija treba da mu prosledi iz image?
+@RequestMapping("/movies")   //todo: bice ovo da se izmeni...vrv neka konfiguracija treba da mu prosledi iz image?
 public class MovieController {
     @Autowired MovieRepository movieRepository;
 
-    @PostMapping(value = "/createMovie", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping
     public Movie addMovie(@RequestBody Movie movie){
         return  movieRepository.save(movie);
     }
 
-    @GetMapping("getMovies")
+    @GetMapping
     public List<Movie> getAllMovies(){
         return movieRepository.findAll();
     }
