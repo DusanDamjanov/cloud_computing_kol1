@@ -14,18 +14,20 @@ import javax.swing.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/movies")   //todo: bice ovo da se izmeni...vrv neka konfiguracija treba da mu prosledi iz image?
+@RequestMapping("/api/movies")
 public class MovieController {
     @Autowired MovieRepository movieRepository;
 
     @PostMapping
-    public Movie addMovie(@RequestBody Movie movie){
-        return  movieRepository.save(movie);
+    public ResponseEntity<Movie> addMovie(@RequestBody Movie movie){
+        Movie resp =  movieRepository.save(movie);
+        return ResponseEntity.status(HttpStatus.CREATED).body(resp);
     }
 
     @GetMapping
-    public List<Movie> getAllMovies(){
-        return movieRepository.findAll();
+    public ResponseEntity<List<Movie>> getAllMovies(){
+        List<Movie> resp = movieRepository.findAll();
+        return ResponseEntity.status(HttpStatus.FOUND).body(resp);
     }
 
 }
